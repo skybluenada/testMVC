@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>게시판</title>
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript">
+
+	function boardWriteCheck(){
+		
+		//바디에 있는 boardWrite의 form속성들을 설정해줌		
+		let flag = document.getElementById("ISUD_TYPE").value;
+		alert(">>>" + flag);
+		document.boardWrite.action = "/testMVC/kswBoardController?ISUD_TYPE="+flag;
+		document.boardWrite.method = "POST";
+		document.boardWrite.enctype = "multipart/form-data";
+		document.boardWrite.submit();
+	}
+</script>	
+</head>
+<body>
+<form name="boardWrite" id="boardWrite">
+<table border="1" align="center">
+	<tr>
+		<td colspan="2" align="center">게시판 글쓰기</td>				
+	</tr>
+	<tr>
+		<td align="center">글번호</td>
+		<!-- readonly을 사용해서 bnum를 사용할 수 없게 만든다.-->
+		<td><input type="text" name="bnum" id="bnum" size="20" readonly></td>
+	</tr>
+	<tr>
+		<td align="center">제목</td>
+		<td><input type="text" name="bsubject" id="bsubject" size="53"></td>
+	</tr>
+	<tr>
+		<td align="center">이름</td>
+		<td><input type="text" name="bwriter" id="bwriter" size="53"></td>
+	</tr>
+	<tr>
+		<td align="center">비밀번호</td>
+		<td><input type="password" name="bpw" id="bpw" size="20"></td>
+	</tr>
+	<tr>
+		<td align="center">입력일</td>
+		<td><input type="text" name="insertdate" size="20" disabled></td>
+	</tr>
+	<tr>
+		<td  align="center">수정일</td>
+		<td><input type="text" name="updatedate" size="20" disabled></td>
+	</tr>
+	<tr>
+		<td  align="center">내용</td>
+		<td>
+		<textarea name="bmemo" id="bmemo" cols="50" rows="10"></textarea>
+	</td>
+	</tr>
+	<tr>
+		<td  align="center">사진</td>
+		<td>
+		<input type="file" name="bphoto" id="bphoto">
+	</td>
+	</tr>
+	<tr>
+		<td colspan="2" align="center">	
+		<input type="hidden" name="ISUD_TYPE" id="ISUD_TYPE" value="I">			
+		<input type="button" value="보내기" onclick="boardWriteCheck()">
+		<input type="reset" value="다시">
+	</td>				
+	</tr>
+</table>
+</form>
+</body>
+</html>
