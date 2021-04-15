@@ -91,7 +91,7 @@ public class KswBoardController extends HttpServlet {
 				System.out.println("fileUploadBool >>> : " + fileUploadBool);
 				if (fileUploadBool){
 					
-					System.out.println(" ���� ���ε� ��ƾ >>> : ");
+					System.out.println(" 파일 업로드 루틴 >>> : ");
 					
 					String uploadPath = CommonUtils.IMG_B_UPLOAD_PATH;
 					int maxSize = CommonUtils.IMG_B_FILE_SIZE;
@@ -109,7 +109,7 @@ public class KswBoardController extends HttpServlet {
 						String bpw = mr.getParameter("bpw");
 						String bmemo = mr.getParameter("bmemo");
 						
-						// ����
+						// 사진
 						Enumeration<String> e = mr.getFileNames();
 						String imgName = e.nextElement();
 						String bphoto = mr.getFilesystemName(imgName);
@@ -121,7 +121,7 @@ public class KswBoardController extends HttpServlet {
 						System.out.println("bmemo 				>>> : " + bmemo);
 						System.out.println("bphoto 				>>> : " + bphoto);
 						
-						// ���� ȣ�� 
+						// 서비스 호출 
 						KswBoardService ks = new KswBoardServiceImpl();
 						KswBoardVO kvo = null;
 						kvo = new KswBoardVO();
@@ -148,13 +148,13 @@ public class KswBoardController extends HttpServlet {
 						}
 						
 					}catch(Exception e){
-						System.out.println("�Խ��� �Է¿��� ���� >>> : " + e);
+						System.out.println("게시판 입력에서 에러 >>> : " + e);
 					}	
 				}
 			}
 			
 			if("U".equals(isudType.toUpperCase())){
-				System.out.println("���������");
+				System.out.println("여기오는지");
 				KswBoardService ks = new KswBoardServiceImpl();
 				KswBoardVO kvo = new KswBoardVO();
 				
